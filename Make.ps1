@@ -22,5 +22,5 @@ function wordcount() {
 	docker run --network $DOCKER_NETWORK --env-file $ENV_FILE cicorias/hadoop-base:$current_branch hdfs dfs -rm -r /input
 }
 
-build
+#build
 wordcount
