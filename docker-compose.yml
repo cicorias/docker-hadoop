@@ -2,7 +2,7 @@ version: "3"
 
 services:
   namenode:
-    image: cicorias/hadoop-namenode:2.0.0-hadoop3.1.2-java8
+    image: cicorias/hadoop-namenode:3.2.1
     build:
       context: ./namenode
     container_name: namenode
@@ -16,7 +16,7 @@ services:
       - ./hadoop.env
 
   datanode:
-    image: cicorias/hadoop-datanode:2.0.0-hadoop3.1.2-java8
+    image: cicorias/hadoop-datanode:3.2.1
     container_name: datanode
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
@@ -26,7 +26,7 @@ services:
       - ./hadoop.env
   
   resourcemanager:
-    image: cicorias/hadoop-resourcemanager:2.0.0-hadoop3.1.2-java8
+    image: cicorias/hadoop-resourcemanager:3.2.1
     container_name: resourcemanager
     environment:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864"
@@ -34,7 +34,7 @@ services:
       - ./hadoop.env
 
   nodemanager1:
-    image: cicorias/hadoop-nodemanager:2.0.0-hadoop3.1.2-java8
+    image: cicorias/hadoop-nodemanager:3.2.1
     container_name: nodemanager
     environment:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
@@ -42,7 +42,7 @@ services:
       - ./hadoop.env
   
   historyserver:
-    image: cicorias/hadoop-historyserver:2.0.0-hadoop3.1.2-java8
+    image: cicorias/hadoop-historyserver:3.2.1
     container_name: historyserver
     environment:
       SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
