@@ -13,7 +13,6 @@ function build() {
 }
   
 function wordcount() {
-  wordcount:
 	docker build -t hadoop-wordcount ./submit
 	docker run --network $DOCKER_NETWORK --env-file $ENV_FILE cicorias/hadoop-base:$current_branch hdfs dfs -mkdir -p /input/
 	docker run --network $DOCKER_NETWORK --env-file $ENV_FILE cicorias/hadoop-base:$current_branch hdfs dfs -copyFromLocal /opt/hadoop-3.2.1/README.txt /input/
